@@ -1,0 +1,25 @@
+---
+// A Scripture quotation (ESV). Pass the text as the slot and the reference as `ref`.
+// Wrap the divine name in <span class="lord"> so it prints in small caps, as in the ESV.
+// `closing` sets the verse large across the whole column, for the final invitation.
+const { ref, closing = false } = Astro.props;
+---
+
+<blockquote class:list={['verse', { closing }]}>
+  <p><slot /></p>
+  <cite>{ref}</cite>
+</blockquote>
+
+<style>
+  .closing {
+    margin: 2.5rem 0 0.5rem;
+    padding: 2.25rem 0 0;
+    border-left: 0;
+    border-top: 1px solid var(--rule);
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    line-height: 1.2;
+    color: var(--blue);
+    max-width: 24ch;
+  }
+  .closing cite { font-size: 1.35rem; margin-top: 0.9rem; }
+</style>

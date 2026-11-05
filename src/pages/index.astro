@@ -1,0 +1,131 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Part from '../components/Part.astro';
+import Verse from '../components/Verse.astro';
+
+const next = [
+  { href: '/bible/', title: 'Read the Bible', text: 'Hear God speak for himself. Start with the Gospel of John.' },
+  { href: '/church/', title: 'Find a church', text: 'Christ gathers his people together. Find a faithful congregation near you.' },
+  { href: '/deeper/', title: 'Go deeper', text: 'The same message, explained more fully with the Westminster Shorter Catechism.' },
+];
+---
+
+<Base>
+  <Hero />
+
+  <Part id="god" n="I" name="God" title="God is holy, and he made you.">
+    <p>
+      God is not an idea, a feeling, or a force. He is the living God, who made the heavens and the earth and
+      everything in them. He has always been, and he will never change. He is perfectly wise, powerful, good, and
+      just. Above all, he is <strong>holy</strong>: entirely pure, without any evil at all.
+    </p>
+    <Verse ref="Isaiah 6:3">Holy, holy, holy is the <span class="lord">Lord</span> of hosts; the whole earth is full of his glory!</Verse>
+    <p>
+      You are not an accident. God made you, in his own image, to know him. You were made to glorify God and to
+      enjoy him forever. That is why nothing else in life ever fully satisfies.
+    </p>
+    <Verse ref="Genesis 1:27">
+      So God created man in his own image, in the image of God he created him; male and female he created them.
+    </Verse>
+  </Part>
+
+  <Part id="man" n="II" name="Man" title="We have turned away from him.">
+    <p>
+      We were made to love God with all our heart and to love our neighbour as ourselves. None of us has done
+      it. We have not just made mistakes. We have gone our own way, put ourselves in God's place, and broken
+      his law in thought, word, and deed. The Bible calls this <strong>sin</strong>.
+    </p>
+    <Verse ref="Romans 3:23">for all have sinned and fall short of the glory of God,</Verse>
+    <p>
+      Because God is holy and just, he cannot overlook sin. It separates us from him, and it deserves his
+      judgment, both now and forever. And we cannot fix it ourselves. Trying harder, being religious, or
+      doing good deeds cannot pay what we owe or change our hearts.
+    </p>
+    <Verse ref="Romans 6:23">
+      For the wages of sin is death, but the free gift of God is eternal life in Christ Jesus our Lord.
+    </Verse>
+  </Part>
+
+  <Part id="christ" n="III" name="Christ" title="God sent his Son to redeem sinners.">
+    <p>
+      This is the good news. God did not leave us in our sin. He sent his Son, <strong>Jesus Christ</strong>,
+      the eternal Son of God, who became a real man without ceasing to be God.
+    </p>
+    <p>
+      Jesus lived the perfect life of obedience that we have not lived. Then he died on a cross, bearing God's
+      just judgment against sin in the place of sinners. On the third day he rose bodily from the dead. He is
+      alive today, reigning at God's right hand, and he will return to judge the world.
+    </p>
+    <Verse ref="1 Peter 3:18">
+      For Christ also suffered once for sins, the righteous for the unrighteous, that he might bring us to God,
+    </Verse>
+    <p>
+      That is what it means to be <em>redeemed</em>: bought back at a price. God forgives every sin of those
+      who belong to Christ and counts them righteous, not because of anything they have done, but because of
+      what Christ has done for them.
+    </p>
+    <Verse ref="2 Corinthians 5:21">
+      For our sake he made him to be sin who knew no sin, so that in him we might become the righteousness of God.
+    </Verse>
+  </Part>
+
+  <Part id="response" n="IV" name="Response" title="Turn from sin, and trust in Christ.">
+    <p>
+      God now commands all people everywhere to repent, and he freely offers Jesus Christ to you. This is not
+      an offer for some other, better kind of person. It is for you, today, just as you are.
+    </p>
+    <Verse ref="Mark 1:15">The time is fulfilled, and the kingdom of God is at hand; repent and believe in the gospel.</Verse>
+    <p>
+      <strong>Repentance</strong> means turning: seeing your sin for what it is, grieving over it, and turning
+      from it to God. <strong>Faith</strong> means receiving and resting on Christ alone for salvation. It is
+      not trusting in your own goodness, or in a prayer you said, or in a decision you made. It is trusting <em>him</em>.
+    </p>
+    <Verse ref="Ezekiel 33:11">
+      As I live, declares the Lord <span class="lord">God</span>, I have no pleasure in the death of the wicked, but
+      that the wicked turn from his way and live; turn back, turn back from your evil ways, for why will you die,
+      O house of Israel?
+    </Verse>
+    <p>
+      You can call on him now, in your own words. Confess your sin to him, and ask him to have mercy on you
+      for Christ's sake. There is no special formula. Salvation is God's gift, and his promise is sure: no one who
+      comes to Christ will be turned away.
+    </p>
+    <Verse ref="John 6:37">All that the Father gives me will come to me, and whoever comes to me I will never cast out.</Verse>
+    <Verse ref="Matthew 11:28" closing>Come to me, all who labor and are heavy laden, and I will give you rest.</Verse>
+  </Part>
+
+  <section class="next" aria-labelledby="next-title">
+    <div class="wrap">
+      <h2 id="next-title">Where to go from here</h2>
+      <ul>
+        {next.map((item) => (
+          <li>
+            <a href={item.href}>{item.title}</a>
+            <p>{item.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .next {
+    background: var(--tint);
+    padding-block: 3.5rem 4.5rem;
+  }
+  .next h2 { margin-top: 0; }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    padding-block: 1rem;
+    border-top: 1px solid var(--rule);
+  }
+  li:first-child { border-top: 0; padding-top: 0.25rem; }
+  li a { font-size: 1.55rem; }
+  li p { margin: 0.15rem 0 0; color: var(--muted); }
+</style>

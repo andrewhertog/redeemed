@@ -1,0 +1,76 @@
+---
+// Opens with the question the Shorter Catechism asks first, set large, and the four parts that answer it.
+const parts = [
+  { n: 'i', id: 'god', name: 'God' },
+  { n: 'ii', id: 'man', name: 'Man' },
+  { n: 'iii', id: 'christ', name: 'Christ' },
+  { n: 'iv', id: 'response', name: 'Response' },
+];
+---
+
+<section class="hero">
+  <div class="wrap-wide">
+    <h1>What were you made&nbsp;for?</h1>
+    <p class="answer">You were made to know God.</p>
+    <p class="lede">
+      Something is wrong with the world, and with us. God has done something about it, in Jesus Christ.
+      Here is that message, plainly told.
+    </p>
+    <a class="button" href="#god">Start reading</a>
+    <nav class="contents" aria-label="The four parts">
+      <ol>
+        {parts.map((p) => (
+          <li><a href={`#${p.id}`}><span class="n">{p.n}</span> {p.name}</a></li>
+        ))}
+      </ol>
+    </nav>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-block: clamp(3.5rem, 11vh, 7.5rem) clamp(3rem, 8vh, 5rem);
+    border-bottom: 1px solid var(--rule);
+  }
+  h1 {
+    font-size: clamp(3.4rem, 11vw, 8.5rem);
+    font-weight: 400;
+    line-height: 0.92;
+    letter-spacing: -0.035em;
+    max-width: 9.5ch;
+    margin: 0 0 2.25rem;
+    margin-left: -0.05em;
+  }
+  .answer {
+    font-size: clamp(1.7rem, 3.4vw, 2.3rem);
+    font-style: italic;
+    line-height: 1.2;
+    margin: 0 0 0.9rem;
+  }
+  .lede {
+    max-width: 30rem;
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+  .contents { margin-top: clamp(3rem, 9vh, 5rem); }
+  .contents ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2.25rem;
+  }
+  .contents a {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 1.25rem;
+  }
+  .contents a:hover { color: var(--blue); }
+  .n {
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.04em;
+    color: var(--blue);
+    margin-right: 0.15rem;
+  }
+</style>

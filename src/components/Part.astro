@@ -1,0 +1,81 @@
+---
+// One part of the gospel, laid out like a reference Bible page: the part's numeral in the inner margin,
+// the argument in the column, and each <Verse> beside the paragraph it follows, in the outer margin.
+const { id, n, name, title } = Astro.props;
+---
+
+<section id={id} class="part" aria-labelledby={`${id}-title`}>
+  <p class="marker"><span class="n">{n}</span> <span class="name">{name}</span></p>
+  <div class="text">
+    <h2 id={`${id}-title`}>{title}</h2>
+    <slot />
+  </div>
+</section>
+
+<style>
+  .part {
+    max-width: 66rem;
+    margin-inline: auto;
+    padding: 4rem 1.25rem 3.5rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .marker {
+    margin: 0 0 0.6rem;
+    color: var(--blue);
+    font-size: 1.25rem;
+    font-style: italic;
+  }
+  .n { font-style: normal; }
+  .n::after { content: '.'; }
+
+  .text { max-width: var(--measure); }
+  h2 { margin: 0 0 1.4rem; }
+
+  /* Outer margin for Scripture once there is room for it. */
+  @media (min-width: 56rem) {
+    .part {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) var(--margin-note);
+      column-gap: 2.75rem;
+      justify-content: center;
+    }
+    .marker { grid-column: 1 / -1; }
+    .text {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: subgrid;
+      align-items: start;
+      max-width: none;
+    }
+    .text > :global(*) { grid-column: 1; }
+    .text > :global(.verse:not(.closing)) {
+      grid-column: 2;
+      margin: 0.35rem 0 1.5rem;
+      font-size: 1.05rem;
+    }
+    .text > :global(.verse.closing) { grid-column: 1 / -1; }
+  }
+
+  /* Numeral moves into the inner margin and stays with the reader through the part. */
+  @media (min-width: 66rem) {
+    .part {
+      grid-template-columns: 6rem minmax(0, var(--measure)) var(--margin-note);
+    }
+    .marker {
+      grid-column: 1;
+      align-self: start;
+      position: sticky;
+      top: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      margin: 0.2rem 0 0;
+    }
+    .n {
+      font-size: 3.4rem;
+      line-height: 1;
+      font-weight: 400;
+    }
+    .n::after { content: none; }
+    .text { grid-column: 2 / -1; }
+  }
+</style>

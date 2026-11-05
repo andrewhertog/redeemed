@@ -1,0 +1,42 @@
+---
+// A Westminster Shorter Catechism question and answer, set as printed catechisms set them:
+// the question in italic, the answer in roman, the number hanging in the margin.
+const { n, q } = Astro.props;
+---
+
+<div class="wsc">
+  <p class="q"><span class="num">Q. {n}</span> {q}</p>
+  <p class="a"><span class="num" aria-hidden="true">A.</span> <slot /></p>
+</div>
+
+<style>
+  .wsc {
+    margin: 1.75rem 0;
+    padding: 1.1rem 1.25rem 1.2rem;
+    background: var(--tint);
+  }
+  .q {
+    font-style: italic;
+    color: var(--blue);
+    margin-bottom: 0.45rem;
+  }
+  .a { margin: 0; }
+  .num {
+    font-style: normal;
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.05em;
+    color: var(--blue);
+    margin-right: 0.2rem;
+  }
+
+  @media (min-width: 52rem) {
+    .wsc { position: relative; }
+    .q .num {
+      position: absolute;
+      right: 100%;
+      margin-right: 1rem;
+      white-space: nowrap;
+    }
+    .a .num { display: none; }
+  }
+</style>

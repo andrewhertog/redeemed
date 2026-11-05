@@ -1,0 +1,116 @@
+---
+import '../styles/global.css';
+
+// Markdown pages pass their frontmatter; .astro pages pass props directly.
+const props = Astro.props.frontmatter ?? Astro.props;
+const { title, description = 'The good news of Jesus Christ, plainly told.', prose = false } = props;
+const fullTitle = title ? `${title} · Redeemed` : 'Redeemed · The good news of Jesus Christ';
+
+const nav = [
+  { href: '/', label: 'The Gospel' },
+  { href: '/deeper/', label: 'Go deeper' },
+  { href: '/bible/', label: 'Read the Bible' },
+  { href: '/resources/', label: 'Resources' },
+  { href: '/church/', label: 'Find a church' },
+];
+const path = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en-CA">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={new URL(path, Astro.site)} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap-wide bar">
+        <a class="brand" href="/">Redeemed</a>
+        <nav aria-label="Main">
+          {nav.map((item) => (
+            <a href={item.href} aria-current={path === item.href ? 'page' : undefined}>{item.label}</a>
+          ))}
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      {prose ? <article class="wrap prose"><slot /></article> : <slot />}
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap-wide foot">
+        <p>
+          Redeemed holds to the Westminster Standards. <a href="/about/">About this site</a>
+        </p>
+        <p class="esv">
+          Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®),
+          © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .skip {
+    position: absolute;
+    left: -9999px;
+  }
+  .skip:focus {
+    left: 1rem;
+    top: 1rem;
+    z-index: 10;
+    background: var(--paper);
+    padding: 0.5rem 1rem;
+  }
+  .site-header { border-bottom: 1px solid var(--rule); }
+  .bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.4rem 2rem;
+    padding-block: 1.1rem 1rem;
+  }
+  .brand {
+    font-size: 1.55rem;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--blue);
+    text-decoration: none;
+  }
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem 1.4rem;
+    font-size: 1.1rem;
+  }
+  nav a {
+    color: var(--muted);
+    text-decoration: none;
+  }
+  nav a:hover { color: var(--ink); }
+  nav a[aria-current='page'] {
+    color: var(--blue);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.3em;
+  }
+  .site-footer {
+    border-top: 1px solid var(--rule);
+    padding-block: 2.25rem 3rem;
+    font-size: 1.05rem;
+    color: var(--muted);
+  }
+  .foot p { max-width: 44rem; }
+  .esv { font-size: 0.9rem; margin: 0; }
+</style>

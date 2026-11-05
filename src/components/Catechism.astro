@@ -14,6 +14,8 @@ const { n, q } = Astro.props;
     margin: 1.75rem 0;
     padding: 1.1rem 1.25rem 1.2rem;
     background: var(--tint);
+    font-family: var(--serif);
+    font-size: 1.1rem;
   }
   .q {
     font-style: italic;
@@ -22,7 +24,9 @@ const { n, q } = Astro.props;
   }
   .a { margin: 0; }
   .num {
+    font-family: var(--sans);
     font-style: normal;
+    font-weight: 600;
     font-variant-caps: all-small-caps;
     letter-spacing: 0.05em;
     color: var(--blue);

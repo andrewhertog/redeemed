@@ -22,10 +22,10 @@ const { id, n, name, title } = Astro.props;
   .marker {
     margin: 0 0 0.6rem;
     color: var(--blue);
-    font-size: 1.25rem;
-    font-style: italic;
+    font-size: 1.1rem;
+    font-weight: 600;
   }
-  .n { font-style: normal; }
+  .n { font-family: var(--serif); }
   .n::after { content: '.'; }
 
   .text { max-width: var(--measure); }
@@ -51,7 +51,7 @@ const { id, n, name, title } = Astro.props;
     .text > :global(.verse:not(.closing)) {
       grid-column: 2;
       margin: 0.35rem 0 1.5rem;
-      font-size: 1.05rem;
+      font-size: 1rem;
     }
     .text > :global(.verse.closing) { grid-column: 1 / -1; }
   }
@@ -73,7 +73,7 @@ const { id, n, name, title } = Astro.props;
     .n {
       font-size: 3.4rem;
       line-height: 1;
-      font-weight: 400;
+      font-weight: 300;
     }
     .n::after { content: none; }
     .text { grid-column: 2 / -1; }

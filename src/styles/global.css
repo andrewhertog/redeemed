@@ -1,9 +1,11 @@
-@import '@fontsource-variable/eb-garamond';
-@import '@fontsource-variable/eb-garamond/wght-italic.css';
+@import '@fontsource-variable/source-sans-3';
+@import '@fontsource-variable/source-sans-3/wght-italic.css';
+@import '@fontsource-variable/source-serif-4/opsz.css';
+@import '@fontsource-variable/source-serif-4/opsz-italic.css';
 
 /*
-  The site is set like a printed reference Bible: one serif family, ink on paper,
-  Scripture in the outer margin, references and the divine name in small caps.
+  Laid out like a reference Bible: ink on paper, Scripture in the outer margin.
+  The site's own words are in the sans; Scripture and the Westminster texts are in the serif.
 */
 :root {
   --paper: #f7f7f4;
@@ -13,7 +15,8 @@
   --rule: #d9dce2;
   --tint: #eceef1;
 
-  --serif: 'EB Garamond Variable', 'EB Garamond', Garamond, 'Iowan Old Style', Georgia, serif;
+  --sans: 'Source Sans 3 Variable', 'Source Sans Pro', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --serif: 'Source Serif 4 Variable', 'Source Serif Pro', Georgia, 'Times New Roman', serif;
   --measure: 34rem;
   --margin-note: 15rem;
   color-scheme: light;
@@ -40,10 +43,9 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--serif);
-  font-size: 1.3rem;
+  font-family: var(--sans);
+  font-size: 1.175rem;
   line-height: 1.6;
-  font-variant-numeric: oldstyle-nums;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -58,18 +60,17 @@ a {
 a:hover { text-decoration-thickness: 2px; }
 
 h1, h2, h3 {
-  font-weight: 500;
+  font-weight: 650;
   line-height: 1.12;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   text-wrap: balance;
   color: var(--blue);
 }
 h1 { font-size: clamp(2.4rem, 6vw, 3.4rem); margin: 0 0 1.25rem; }
 h2 { font-size: clamp(1.8rem, 4vw, 2.3rem); margin: 3.5rem 0 1rem; }
-h3 { font-size: 1.4rem; font-style: italic; margin: 2.25rem 0 0.5rem; }
+h3 { font-size: 1.3rem; margin: 2.25rem 0 0.5rem; }
 
 p, ul, ol { margin: 0 0 1.1rem; }
-p { hyphens: auto; }
 strong { font-weight: 600; }
 
 /* The divine name, as the ESV prints it: LORD, GOD. */
@@ -91,8 +92,10 @@ blockquote, .verse {
   margin: 1.6rem 0;
   padding: 0 0 0 1.1rem;
   border-left: 2px solid var(--blue);
+  font-family: var(--serif);
   font-style: italic;
   line-height: 1.5;
+  hyphens: auto;
 }
 blockquote p:last-child, .verse p:last-child { margin-bottom: 0; }
 .verse cite, blockquote cite {
@@ -103,6 +106,8 @@ blockquote p:last-child, .verse p:last-child { margin-bottom: 0; }
   letter-spacing: 0.04em;
   font-size: 1.05em;
   color: var(--blue);
+  font-family: var(--sans);
+  font-weight: 600;
 }
 
 .button {
@@ -110,7 +115,8 @@ blockquote p:last-child, .verse p:last-child { margin-bottom: 0; }
   padding: 0.55rem 1.3rem 0.6rem;
   background: var(--blue);
   color: var(--paper);
-  font-size: 1.15rem;
+  font-size: 1.05rem;
+  font-weight: 600;
   text-decoration: none;
   border-radius: 2px;
 }
@@ -118,7 +124,7 @@ blockquote p:last-child, .verse p:last-child { margin-bottom: 0; }
 
 /* Markdown page content */
 .prose { padding-block: 3.5rem 5rem; }
-.prose h1 + p { font-size: 1.4rem; font-style: italic; color: var(--muted); }
+.prose h1 + p { font-size: 1.3rem; color: var(--muted); }
 .prose ul, .prose ol { padding-left: 1.3rem; }
 .prose li { margin-bottom: 0.5rem; }
 .prose li::marker { color: var(--blue); }
@@ -128,11 +134,10 @@ blockquote p:last-child, .verse p:last-child { margin-bottom: 0; }
   text-align: center;
 }
 .prose hr::after { content: '⁂'; color: var(--blue); font-size: 1.3rem; }
-.prose table { width: 100%; border-collapse: collapse; font-size: 1.1rem; }
+.prose table { width: 100%; border-collapse: collapse; font-size: 1.05rem; }
 .prose th {
   text-align: left;
-  font-weight: 500;
-  font-style: italic;
+  font-weight: 650;
   color: var(--blue);
   padding: 0.4rem 0.75rem 0.4rem 0;
   border-bottom: 1px solid var(--blue);

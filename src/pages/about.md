@@ -25,3 +25,9 @@ In particular:
 ## What this site is not
 
 It is not a church, and it is not a substitute for one. Please [find a congregation](/church/) where Christ is preached, and speak with a minister there.
+
+## Privacy
+
+This site uses **Google Analytics** to count visits and see which pages are read, so we can tell whether the site is helping anyone. Google Analytics sets cookies in your browser and collects information such as the pages you visit, roughly where you are (city or region), and the kind of device and browser you use. We do not ask for your name or email, and we do not try to identify you.
+
+The data is processed by Google under its [privacy policy](https://policies.google.com/privacy). You can block it with your browser's privacy settings, a content blocker, or Google's [opt-out add-on](https://tools.google.com/dlpage/gaoptout).

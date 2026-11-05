@@ -37,3 +37,5 @@ npm run build    # outputs to dist/
 2. In Cloudflare: **Workers & Pages → Create → Pages → Connect to Git**, choose the repo.
 3. Framework preset **Astro**; build command `npm run build`; output directory `dist`.
 4. Under **Custom domains**, add `redeemed.ca` (and `www.redeemed.ca`, redirecting to the apex).
+5. For Google Analytics, add the environment variable `PUBLIC_GA_ID` (your GA4 measurement ID, `G-XXXXXXXXXX`)
+   under **Settings → Variables and Secrets** and redeploy. Without it, no analytics tag is rendered.

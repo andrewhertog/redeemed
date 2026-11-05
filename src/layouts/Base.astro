@@ -14,6 +14,9 @@ const nav = [
   { href: '/church/', label: 'Find a church' },
 ];
 const path = Astro.url.pathname;
+
+// Google Analytics 4: set PUBLIC_GA_ID (e.g. G-XXXXXXXXXX) at build time. Omitted in dev.
+const gaId = import.meta.env.PROD ? import.meta.env.PUBLIC_GA_ID : undefined;
 ---
 
 <!doctype html>
@@ -28,6 +31,17 @@ const path = Astro.url.pathname;
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    {gaId && (
+      <>
+        <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
+        <script is:inline define:vars={{ gaId }}>
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function () { dataLayer.push(arguments); };
+          gtag('js', new Date());
+          gtag('config', gaId);
+        </script>
+      </>
+    )}
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
